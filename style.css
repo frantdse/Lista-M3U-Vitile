@@ -41,6 +41,32 @@ body {
     text-align: center;
 }
 
+
+/* Banner Mundialista */
+.world-cup-banner {
+    background: linear-gradient(90deg, #74ACDF 0%, #FFFFFF 50%, #74ACDF 100%);
+    color: #00355f;
+    padding: 10px;
+    font-family: var(--fuente-titulo);
+    font-weight: 900;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px solid #74ACDF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(116, 172, 223, 0.3);
+}
+
+/* Resaltado de los +1000 usuarios */
+h2 {
+    font-size: 1.3rem; /* Un poco más grande para que se note el hito */
+    color: #2c5282;
+}
+
+strong {
+    color: var(--color-principal-hover);
+    }
 h1 {
     font-family: var(--fuente-titulo);
     font-size: 2.75rem;
