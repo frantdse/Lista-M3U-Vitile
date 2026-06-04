@@ -1,30 +1,37 @@
-/* * ======================================
+/* ======================================
  * Variables y Estilos Base
- * ======================================
- */
+ * ====================================== */
 :root {
-    --color-principal: #38a169;
-    --color-principal-hover: #2f855a;
-    --color-texto-principal: #2d3748;
-    --color-texto-secundario: #718096;
-    --color-fondo: #f7fafc;
-    --color-fondo-gradiente: #edf2f7;
+    --color-primario: #005691;
+    --color-primario-hover: #003f6b;
+    --color-celeste-arg: #74ACDF;
+    --color-texto-principal: #1a202c;
+    --color-texto-secundario: #4a5568;
+    --color-fondo-body: #f0f4f8;
+    --color-card-fondo: #ffffff;
     --color-borde: #e2e8f0;
+    
     --fuente-titulo: 'Montserrat', sans-serif;
     --fuente-texto: 'Poppins', sans-serif;
-    --sombra-card: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --sombra-container: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    --sombra-card: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    --sombra-container: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
 
 body {
     font-family: var(--fuente-texto);
-    background: linear-gradient(180deg, var(--color-fondo) 0%, var(--color-fondo-gradiente) 100%);
+    background-color: var(--color-fondo-body);
     color: var(--color-texto-principal);
     margin: 0;
-    padding: 50px 20px;
+    padding: 40px 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -32,222 +39,396 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 780px;
     width: 100%;
-    background-color: white;
+    background-color: var(--color-card-fondo);
     padding: 40px;
-    border-radius: 16px;
+    border-radius: 20px;
     box-shadow: var(--sombra-container);
+}
+
+/* ======================================
+ * Header y Banners
+ * ====================================== */
+.world-cup-banner {
+    background: linear-gradient(90deg, #74ACDF 0%, #FFFFFF 50%, #74ACDF 100%);
+    color: #002d52;
+    padding: 12px;
+    font-family: var(--fuente-titulo);
+    font-weight: 900;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(116, 172, 223, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     text-align: center;
 }
 
-
-/* Banner Mundialista */
-.world-cup-banner {
-    background: linear-gradient(90deg, #74ACDF 0%, #FFFFFF 50%, #74ACDF 100%);
-    color: #00355f;
-    padding: 10px;
-    font-family: var(--fuente-titulo);
-    font-weight: 900;
-    font-size: 0.9rem;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border: 2px solid #74ACDF;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(116, 172, 223, 0.3);
-}
-
-/* Resaltado de los +1000 usuarios */
-h2 {
-    font-size: 1.3rem; /* Un poco más grande para que se note el hito */
-    color: #2c5282;
-}
-
-strong {
-    color: var(--color-principal-hover);
-    }
 h1 {
     font-family: var(--fuente-titulo);
-    font-size: 2.75rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    color: var(--color-texto-principal); 
+    color: var(--color-primario); 
     margin: 0 0 10px 0;
-    line-height: 1.1;
+    text-align: center;
+    letter-spacing: -0.5px;
 }
 
 h2 {
     font-family: var(--fuente-texto);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--color-texto-secundario);
-    margin: 0 0 20px 0;
+    margin: 0 0 25px 0;
+    text-align: center;
 }
+
 h2 a {
-    color: var(--color-texto-secundario);
+    color: var(--color-primario);
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
-h2 a:hover { color: var(--color-principal); text-decoration: underline; }
 
-.update-badge-container { margin-bottom: 25px; }
+h2 a:hover { 
+    border-bottom-color: var(--color-primario);
+}
+
+.update-badge-container { 
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.update-badge, .user-badge {
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
 .update-badge {
-    background-color: #dbfadd;
-    color: #2f855a;
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    border: 1px solid #c6f6d5;
-    display: inline-block;
+    background-color: #e3fafc;
+    color: #0c8599;
+    border: 1px solid #c5f6fa;
+}
+
+.user-badge {
+    background-color: #ebfbee;
+    color: #2b8a3e;
+    border: 1px solid #d3f9d8;
 }
 
 p {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.6;
     margin-bottom: 20px;
-    font-weight: 400;
-    color: #4a5568;
-    text-align: left;
+    color: var(--color-texto-secundario);
 }
-.intro { text-align: center; font-size: 1.1rem; margin-bottom: 40px; }
 
-/* Video */
-.video-presentation { margin: 40px 0; text-align: center; }
-.video-presentation h3 { font-family: var(--fuente-titulo); font-size: 1.5rem; color: var(--color-texto-principal); margin-bottom: 20px; }
+.intro { 
+    text-align: center; 
+    font-size: 1.05rem; 
+    max-width: 650px;
+    margin: 0 auto 40px auto;
+}
+
+strong {
+    color: var(--color-texto-principal);
+    font-weight: 600;
+}
+
+/* ======================================
+ * Secciones de Contenido
+ * ====================================== */
+.video-presentation { 
+    margin: 40px 0; 
+}
+
+.video-presentation h3, .channel-guide h3 { 
+    font-family: var(--fuente-titulo); 
+    font-size: 1.25rem; 
+    color: var(--color-texto-principal); 
+    margin-bottom: 20px; 
+    font-weight: 700;
+}
+
 .video-wrapper {
-    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;
-    background: #000; border-radius: 8px; box-shadow: var(--sombra-card);
+    position: relative; 
+    padding-bottom: 56.25%; 
+    height: 0; 
+    overflow: hidden; 
+    background: #000; 
+    border-radius: 12px; 
+    box-shadow: var(--sombra-card);
 }
-.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-/* Guía */
+.video-wrapper iframe { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    border: 0; 
+}
+
+/* Guía de Canales */
 .channel-guide {
-    margin: 40px 0 50px 0; padding: 30px; background-color: #fdfdfd;
-    border: 1px solid var(--color-borde); border-radius: 12px; text-align: left;
+    margin: 40px 0; 
+    padding: 30px; 
+    background-color: #f8fafc;
+    border: 1px solid var(--color-borde); 
+    border-radius: 14px;
 }
-.channel-guide h3 { font-family: var(--fuente-titulo); font-size: 1.5rem; text-align: center; margin-bottom: 30px; }
-.guide-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-.guide-columns ul { list-style: none; padding: 0; margin: 0; }
-.guide-columns li { font-family: var(--fuente-texto); color: var(--color-texto-secundario); padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
-.guide-columns li:first-child { border-bottom: 2px solid var(--color-principal); padding-bottom: 10px; margin-bottom: 5px; }
-.guide-columns li .category { font-family: var(--fuente-titulo); font-weight: 700; font-size: 1rem; color: var(--color-principal); display: block; }
 
-/* * ======================================
- * TARJETAS DE ENLACES (ESTILO ORIGINAL RESTAURADO)
- * ======================================
- */
+.guide-columns { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 25px; 
+}
+
+.guide-columns ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.guide-columns li { 
+    font-size: 0.95rem;
+    color: var(--color-texto-secundario); 
+    padding: 8px 0; 
+    border-bottom: 1px solid #edf2f7; 
+}
+
+.guide-columns li:first-child { 
+    border-bottom: 2px solid var(--color-celeste-arg); 
+    padding-bottom: 8px; 
+    margin-bottom: 8px; 
+}
+
+.guide-columns li .category { 
+    font-family: var(--fuente-titulo); 
+    font-weight: 700; 
+    font-size: 0.95rem; 
+    color: var(--color-primario); 
+}
+
+/* ======================================
+ * Tarjetas de Enlaces (M3U)
+ * ====================================== */
 .raw-section {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    margin-top: 30px;
+    gap: 20px;
+    margin: 40px 0;
 }
+
 .raw-card {
-    background-color: #ffffff;
+    background-color: var(--color-card-fondo);
     border: 1px solid var(--color-borde);
-    border-radius: 12px;
-    text-align: left;
+    border-radius: 14px;
     overflow: hidden;
     box-shadow: var(--sombra-card);
-    transition: transform 0.3s, box-shadow 0.3s;
 }
-.raw-card:hover { transform: translateY(-5px); box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.08); }
 
 .raw-card-header {
-    display: flex; align-items: center; gap: 12px; padding: 20px;
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    padding: 20px;
+    background-color: #f8fafc;
     border-bottom: 1px solid var(--color-borde);
 }
-.raw-card-header .icon { width: 24px; height: 24px; color: var(--color-principal); flex-shrink: 0; }
-.raw-card-header h3 { font-family: var(--fuente-titulo); font-size: 1.3rem; margin: 0; }
 
-.raw-card-body { padding: 20px; background-color: #fafafa; }
-.raw-card-body p { margin-top: 0; font-size: 1rem; color: var(--color-texto-secundario); margin-bottom: 10px; }
+.raw-card-header .icon { 
+    width: 22px; 
+    height: 22px; 
+    color: var(--color-primario); 
+    flex-shrink: 0; 
+}
 
-/* ESTILO DARK ORIGINAL */
+.raw-card-header h3 { 
+    font-family: var(--fuente-titulo); 
+    font-size: 1.1rem; 
+    margin: 0; 
+    font-weight: 700;
+}
+
+.raw-card-body { 
+    padding: 20px; 
+}
+
+.raw-card-body p { 
+    margin-top: 0; 
+    font-size: 0.95rem; 
+    color: var(--color-texto-secundario); 
+    margin-bottom: 15px; 
+}
+
 .raw-link-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--color-texto-principal); /* Fondo Oscuro */
-    color: #f0f0f0; /* Texto Blanco */
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #1e293b; 
+    color: #f1f5f9; 
+    padding: 12px 16px;
+    border-radius: 10px;
+    gap: 15px;
 }
 
 .raw-link-text {
-    font-size: 0.95rem;
-    overflow-x: auto; /* Scroll horizontal */
+    font-size: 0.85rem;
+    overflow-x: auto; 
     white-space: nowrap;
-    padding-right: 15px;
+    font-family: monospace;
+    flex-grow: 1;
 }
 
-.copy-btn {
-    background: transparent;
+/* Custom Scrollbar para el link largo en móviles */
+.raw-link-text::-webkit-scrollbar {
+    height: 4px;
+}
+.raw-link-text::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 2px;
+}
+
+.copy-btn, .download-link-btn {
+    background: #334155;
     border: none;
-    color: #9facbf;
+    color: #cbd5e1;
     cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
-    transition: color 0.3s, background-color 0.3s;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.copy-btn:hover { color: white; background-color: #4a5568; }
-.copy-btn .icon { width: 20px; height: 20px; display: inline-block; vertical-align: middle; }
-.copy-btn .icon-check { display: none; color: var(--color-principal); }
 
-/* Ver Online */
-.watch-online-section {
-    margin: 50px 0; padding: 30px; background-color: #fff5f5;
-    border: 1px solid #fc8181; border-radius: 12px; text-align: center;
+.copy-btn:hover, .download-link-btn:hover { 
+    color: #ffffff; 
+    background-color: var(--color-primario); 
 }
-.watch-online-section h3 { font-family: var(--fuente-titulo); font-size: 1.6rem; color: #e53e3e; margin: 0 0 10px 0; }
-.watch-online-section p { color: #9b2c2c; text-align: center; margin-bottom: 25px; }
+
+.copy-btn .icon, .download-link-btn .icon { 
+    width: 18px; 
+    height: 18px; 
+}
+
+.copy-btn .icon-check { 
+    display: none; 
+    color: #4ade80; 
+}
+
+/* ======================================
+ * Call To Actions & Footer
+ * ====================================== */
+.watch-online-section, .collaboration-section {
+    margin: 30px 0; 
+    padding: 30px; 
+    border-radius: 14px; 
+    text-align: center;
+    border: 1px solid var(--color-borde);
+}
+
+.watch-online-section {
+    background-color: #f0f7ff;
+    border-color: #d0e7ff;
+}
+
+.watch-online-section h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.25rem;
+    color: #004085;
+    margin: 0 0 10px 0;
+}
+
+.watch-online-section p { color: #004085; opacity: 0.85; margin-bottom: 20px;}
+
+.collaboration-section {
+    background-color: #fafafa;
+}
+
+.collaboration-section h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.25rem;
+    color: var(--color-texto-principal);
+    margin: 0 0 10px 0;
+}
+
+.online-button, .collaboration-button {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 10px;
+    color: white;
+    font-family: var(--fuente-texto); 
+    font-weight: 600; 
+    text-decoration: none;
+    padding: 12px 24px; 
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
 
 .online-button {
-    display: inline-flex; align-items: center; gap: 10px;
-    background-color: #f56565; color: white;
-    font-family: var(--fuente-texto); font-weight: 700; text-decoration: none;
-    padding: 14px 30px; border-radius: 8px;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-    box-shadow: 0 6px 10px -2px rgba(229, 62, 62, 0.4); font-size: 1.1rem;
+    background-color: var(--color-primario);
+    box-shadow: 0 4px 6px -1px rgba(0, 86, 145, 0.2);
 }
-.online-button:hover { background-color: #e53e3e; transform: translateY(-2px); box-shadow: 0 8px 12px -3px rgba(229, 62, 62, 0.5); }
-.online-button .icon { width: 24px; height: 24px; color: white; }
-.small-text { font-size: 0.9rem; color: #718096; margin: 20px 0 0 0; }
 
-/* Colaboración */
-.collaboration-section {
-    margin-top: 50px; padding: 30px; background-color: #ebf8ff;
-    border: 1px solid #90cdf4; border-radius: 12px; text-align: center;
+.online-button:hover { 
+    background-color: var(--color-primario-hover);
+    transform: translateY(-1px);
 }
-.collaboration-section h3 { font-family: var(--fuente-titulo); font-size: 1.5rem; color: #3182ce; margin: 0 0 10px 0; }
-.collaboration-section p { color: #4c6280; margin-bottom: 25px; }
+
 .collaboration-button {
-    display: inline-flex; align-items: center; gap: 10px;
-    background-color: #4299e1; color: white;
-    font-family: var(--fuente-texto); font-weight: 700; text-decoration: none;
-    padding: 12px 25px; border-radius: 8px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: #475569;
 }
-.collaboration-button:hover { background-color: #3182ce; box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.15); }
-.collaboration-button .icon { width: 20px; height: 20px; color: white; }
 
-/* Legalidad */
+.collaboration-button:hover {
+    background-color: #1e293b;
+}
+
+.online-button .icon, .collaboration-button .icon { 
+    width: 18px; 
+    height: 18px; 
+    fill: currentColor;
+}
+
 .legalidad {
-    margin-top: 40px; padding: 20px; background-color: #f0fff4;
-    border: 1px solid #c6f6d5; border-radius: 8px; font-size: 0.95rem; text-align: left;
+    margin-top: 40px; 
+    padding: 20px; 
+    background-color: #f8fafc;
+    border: 1px solid var(--color-borde); 
+    border-radius: 10px; 
+    font-size: 0.85rem; 
 }
-.legalidad p { margin: 0; color: #2f855a; }
 
-/* Móvil */
-@media (max-width: 600px) {
-    body { padding: 20px 10px; }
-    .container { padding: 25px 20px; }
-    h1 { font-size: 2.2rem; }
-    .guide-columns { grid-template-columns: 1fr; }
-    .online-button { padding: 12px 20px; font-size: 1rem; }
+.legalidad p { 
+    margin: 0; 
+    color: #64748b; 
+    text-align: justify;
 }
+
+.small-text { 
+    font-size: 0.85rem; 
+    color: var(--color-texto-secundario); 
+    margin-top: 20px; 
+    text-align: center;
+}
+
+/* ======================================
+ * Responsive Design
+ * ====================================== */
+@media (max-width: 600px) {
+    body { padding: 15px 10px; }
+    .container { padding: 25px 20px; border-radius: 16px; }
+    h1 { font-size: 1.85rem; }
+    .guide-columns { grid-template-columns: 1fr; gap: 15px; }
+    .online-button, .collaboration-button { width: 100%; justify-content: center; }
+    }
