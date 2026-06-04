@@ -48,20 +48,21 @@ body {
     box-shadow: var(--shadow-subtle);
 }
 
-/* Banner Mundialista - Ahora elegante y sobrio */
+/* El alma de la web: El Banner Mundialista */
 .world-cup-banner {
-    background-color: #f0f7ff;
-    color: #0051af;
-    padding: 10px 16px;
-    font-family: var(--font-title);
-    font-weight: 700;
-    font-size: 0.8rem;
-    border-radius: 8px;
-    margin-bottom: 40px;
+    background: linear-gradient(90deg, var(--azul-AFA) 0%, #134074 100%);
+    color: var(--blanco-puro);
+    padding: 14px 20px;
+    font-family: var(--fuente-titulo);
+    font-weight: 900;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    margin-bottom: 35px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-align: center;
-    border: 1px solid #d0e3ff;
+    box-shadow: 0 8px 20px rgba(11, 37, 69, 0.2);
+    border-bottom: 3px solid var(--oro-sol);
 }
 
 h1 {
