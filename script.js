@@ -39,3 +39,41 @@ function copyLink(elementId, button) {
     });
 }
 
+// Cuenta regresiva del Mundial FIFA 2026 integrada nativamente
+(function(){
+  // Fecha objetivo: 11 de junio de 2026 - 16:00 hora Buenos Aires (UTC-3)
+  const targetDate = new Date(Date.UTC(2026, 5, 11, 19, 0, 0)).getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    // Controlamos la existencia de los elementos antes de procesar
+    const titleEl = document.querySelector(".title-countdown");
+    if (!titleEl) return;
+
+    if (diff < 0) {
+      titleEl.innerText = "¡El Mundial FIFA 2026 ya comenzó!";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    if (daysEl) daysEl.textContent = days;
+    if (hoursEl) hoursEl.textContent = hours;
+    if (minutesEl) minutesEl.textContent = mins;
+    if (secondsEl) secondsEl.textContent = secs;
+  }
+
+  // Ejecución y ciclo continuo
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
