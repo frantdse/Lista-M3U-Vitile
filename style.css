@@ -8,7 +8,7 @@
     
     --text-main: #111111;
     --text-muted: #666666;
-    --text-link: #0070f3; /* Azul limpio de interfaz */
+    --text-link: #0070f3;
     
     --font-title: 'Montserrat', sans-serif;
     --font-text: 'Poppins', sans-serif;
@@ -37,7 +37,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Contenedor sin bordes pesados, basado en sombras sutiles y espacios limpios */
+/* Contenedor Principal */
 .container {
     max-width: 740px;
     width: 100%;
@@ -48,114 +48,23 @@ body {
     box-shadow: var(--shadow-subtle);
 }
 
-/* El alma de la web: El Banner Mundialista */
+/* Banner Superior */
 .world-cup-banner {
-    background: linear-gradient(90deg, var(--azul-AFA) 0%, #134074 100%);
-    color: var(--blanco-puro);
-    padding: 14px 20px;
-    font-family: var(--fuente-titulo);
-    font-weight: 900;
-    font-size: 0.9rem;
-    border-radius: 12px;
-    margin-bottom: 35px;
+    background-color: #f0f7ff;
+    color: #0051af;
+    padding: 10px 16px;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 40px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(11, 37, 69, 0.2);
-    border-bottom: 3px solid var(--oro-sol);
+    border: 1px solid #d0e3ff;
 }
 
-/* ======================================
- * Componente: Contador Mundialista Nativo
- * ====================================== */
-#wc-countdown {
-    padding: 20px;
-    max-width: 100%;
-    margin: 0 auto 40px auto;
-    background: linear-gradient(135deg, #0b2d5c, #123d7a);
-    border-radius: 12px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-    text-align: center;
-    color: #ffffff;
-    /* Obliga al componente a usar la fuente Poppins del sitio principal */
-    font-family: var(--font-text), sans-serif; 
-}
-
-.countdown-tag {
-    color: #dbdbdb;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.header-countdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.title-countdown {
-    color: #ffffff;
-    font-family: var(--font-title), sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.wc-logo {
-    padding-right: 12px;
-    object-fit: contain;
-}
-
-/* Distribución de los segmentos */
-.countdown-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.time-segment {
-    flex: 1 1 0;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.number {
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1;
-    background: linear-gradient(145deg, #1c4fa3, #163e82);
-    border-radius: 8px;
-    padding: 12px 0;
-    width: 100%;
-    box-shadow: inset 0 2px 4px rgba(255,255,255,0.08), 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.label {
-    font-size: clamp(0.65rem, 2.5vw, 0.8rem);
-    color: #cfd8ff;
-    margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Ajustes de pantalla responsive */
-@media (max-width: 600px) {
-    #wc-countdown { padding: 15px 10px; }
-    .title-countdown { font-size: 1.1rem; }
-    .number { padding: 10px 0; }
-}
-
+/* Textos Identitarios Libres de Interferencia */
 h1 {
     font-family: var(--font-title);
     font-size: 2.4rem;
@@ -187,7 +96,7 @@ h2 a:hover {
     border-bottom-color: var(--text-link);
 }
 
-/* Badges de actualización */
+/* Badges de Estado */
 .update-badge-container { 
     display: flex;
     justify-content: center;
@@ -226,6 +135,89 @@ strong {
     font-weight: 600;
 }
 
+/* ======================================
+ * Componente Aislado: Contador Mundialista
+ * ====================================== */
+#wc-countdown {
+    padding: 24px 15px;
+    max-width: 100%;
+    margin: 30px 0 40px 0;
+    background: linear-gradient(135deg, #0b2d5c, #123d7a);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    color: #ffffff;
+    font-family: var(--font-text), sans-serif;
+}
+
+.countdown-tag {
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.header-countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.title-countdown {
+    color: #ffffff !important;
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.wc-logo {
+    display: block;
+    object-fit: contain;
+}
+
+.countdown-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.time-segment {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wc-countdown .number {
+    font-size: clamp(1.4rem, 4vw, 2rem) !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    line-height: 1;
+    background: linear-gradient(145deg, #1c4fa3, #163e82);
+    border-radius: 8px;
+    padding: 14px 0;
+    width: 100%;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.08), 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#wc-countdown .label {
+    font-size: clamp(0.65rem, 2.3vw, 0.8rem) !important;
+    color: #cfd8ff !important;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* Video Presentation */
 .video-presentation { margin: 50px 0; }
 .video-presentation h3, .channel-guide h3 {
@@ -247,7 +239,7 @@ strong {
 }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-/* Guía de Canales Estilo Lista Limpia */
+/* Guía de Canales */
 .channel-guide {
     margin: 50px 0;
     padding: 35px;
@@ -312,7 +304,6 @@ strong {
 .raw-card-body { padding: 20px; }
 .raw-card-body p { font-size: 0.85rem; margin-bottom: 12px; }
 
-/* El input del código ahora es gris muy suave, súper legible */
 .raw-link-wrapper {
     display: flex;
     align-items: center;
@@ -354,7 +345,6 @@ strong {
 }
 
 .copy-btn .icon, .download-link-btn .icon { width: 15px; height: 15px; }
-.copy-btn .icon-check { display: none; color: #00875a; }
 
 /* Botones Principales de Acción */
 .watch-online-section, .collaboration-section {
@@ -384,7 +374,6 @@ strong {
     transition: all 0.15s ease;
 }
 
-/* Botón Negro Sólido estilo Vercel */
 .online-button {
     background: #111111;
     color: #ffffff;
@@ -394,7 +383,6 @@ strong {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Botón Blanco Bordeado */
 .collaboration-button {
     background: #ffffff;
     color: var(--text-main);
@@ -424,6 +412,9 @@ strong {
     body { padding: 30px 10px; }
     .container { padding: 35px 20px; }
     h1 { font-size: 1.9rem; }
+    #wc-countdown { margin: 20px 0 35px 0; padding: 20px 10px; }
+    .title-countdown { font-size: 1.2rem; }
+    #wc-countdown .number { padding: 10px 0; }
     .guide-columns { grid-template-columns: 1fr; gap: 20px; }
     .online-button, .collaboration-button { width: 100%; justify-content: center; }
     }
