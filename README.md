@@ -8,7 +8,7 @@
 
 ¡Es muy sencillo! Para acceder a nuestra lista actualizada, obtener el soporte más reciente y disfrutar de toda la información, por favor ingresen directamente a nuestra web oficial:
 
-👉 **[Sitio Web Oficial](https://frantdse.github.io/Lista-M3U-Vitile-Argentina-/)**
+👉 **[Sitio Web Oficial](https://frantdse.github.io/Lista-M3U-Vitile)**
 
 Dentro de la página van a encontrar la Lista M3U y mas información sobre la lista
 
