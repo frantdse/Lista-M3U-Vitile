@@ -8,7 +8,7 @@
     
     --text-main: #111111;
     --text-muted: #666666;
-    --text-link: #0070f3;
+    --text-link: #0070f3; /* Azul limpio de interfaz */
     
     --font-title: 'Montserrat', sans-serif;
     --font-text: 'Poppins', sans-serif;
@@ -37,7 +37,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Contenedor Principal */
+/* Contenedor sin bordes pesados, basado en sombras sutiles y espacios limpios */
 .container {
     max-width: 740px;
     width: 100%;
@@ -48,9 +48,22 @@ body {
     box-shadow: var(--shadow-subtle);
 }
 
+/* Banner Mundialista - Ahora elegante y sobrio */
+.world-cup-banner {
+    background-color: #f0f7ff;
+    color: #0051af;
+    padding: 10px 16px;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    border: 1px solid #d0e3ff;
+}
 
-
-/* Textos Identitarios Libres de Interferencia */
 h1 {
     font-family: var(--font-title);
     font-size: 2.4rem;
@@ -82,7 +95,7 @@ h2 a:hover {
     border-bottom-color: var(--text-link);
 }
 
-/* Badges de Estado */
+/* Badges de actualización */
 .update-badge-container { 
     display: flex;
     justify-content: center;
@@ -121,8 +134,6 @@ strong {
     font-weight: 600;
 }
 
-
-
 /* Video Presentation */
 .video-presentation { margin: 50px 0; }
 .video-presentation h3, .channel-guide h3 {
@@ -144,7 +155,7 @@ strong {
 }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-/* Guía de Canales */
+/* Guía de Canales Estilo Lista Limpia */
 .channel-guide {
     margin: 50px 0;
     padding: 35px;
@@ -209,6 +220,7 @@ strong {
 .raw-card-body { padding: 20px; }
 .raw-card-body p { font-size: 0.85rem; margin-bottom: 12px; }
 
+/* El input del código ahora es gris muy suave, súper legible */
 .raw-link-wrapper {
     display: flex;
     align-items: center;
@@ -250,6 +262,7 @@ strong {
 }
 
 .copy-btn .icon, .download-link-btn .icon { width: 15px; height: 15px; }
+.copy-btn .icon-check { display: none; color: #00875a; }
 
 /* Botones Principales de Acción */
 .watch-online-section, .collaboration-section {
@@ -279,6 +292,7 @@ strong {
     transition: all 0.15s ease;
 }
 
+/* Botón Negro Sólido estilo Vercel */
 .online-button {
     background: #111111;
     color: #ffffff;
@@ -288,6 +302,7 @@ strong {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* Botón Blanco Bordeado */
 .collaboration-button {
     background: #ffffff;
     color: var(--text-main);
@@ -317,9 +332,6 @@ strong {
     body { padding: 30px 10px; }
     .container { padding: 35px 20px; }
     h1 { font-size: 1.9rem; }
-    #wc-countdown { margin: 20px 0 35px 0; padding: 20px 10px; }
-    .title-countdown { font-size: 1.2rem; }
-    #wc-countdown .number { padding: 10px 0; }
     .guide-columns { grid-template-columns: 1fr; gap: 20px; }
     .online-button, .collaboration-button { width: 100%; justify-content: center; }
-    }
+}
