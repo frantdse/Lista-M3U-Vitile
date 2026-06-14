@@ -69,7 +69,7 @@ header h2 a { color: var(--text-main); text-decoration: none; font-weight: 600; 
 .status-value { font-size: 0.9rem; font-weight: 600; }
 .status-online { color: #00875a; font-weight: 700; }
 
-/* NUEVA ESTÉTICA GENERADOR INTEGRADO */
+/* DISEÑO GENERADOR INTEGRADO DE LISTAS */
 .generator-box {
     background: #fafafa;
     border: 1px solid var(--border-color);
@@ -91,4 +91,86 @@ header h2 a { color: var(--text-main); text-decoration: none; font-weight: 600; 
 
 .action-buttons-wrapper { display: flex; flex-direction: column; gap: 12px; }
 .raw-link-wrapper { display: flex; align-items: center; background-color: #f4f4f5; border: 1px solid #e4e4e7; padding: 10px 12px; border-radius: 8px; gap: 10px; width: 100%; }
-.raw-link-text { font-size: 0.8rem; color: #27272a; font-family: monospace; overflow-x: auto; white
+.raw-link-text { font-size: 0.8rem; color: #27272a; font-family: monospace; overflow-x: auto; white-space: nowrap; flex-grow: 1; }
+.raw-link-text::-webkit-scrollbar { height: 2px; }
+.copy-btn { background: #ffffff; border: 1px solid #e4e4e7; padding: 6px; border-radius: 6px; cursor: pointer; display: inline-flex; }
+.copy-btn .icon { width: 14px; height: 14px; }
+
+.download-m3u-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-text);
+    background: var(--text-link);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.download-m3u-btn:hover { background: #0056b3; }
+.download-m3u-btn .icon { width: 16px; height: 16px; }
+
+/* Video de Presentación */
+.video-presentation { margin: 35px 0; }
+.video-presentation h3, .channel-guide h3 { font-family: var(--font-title); font-size: 1.1rem; color: var(--text-main); margin-bottom: 16px; font-weight: 700; text-align: center; }
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+/* Guía de Canales con Buscador e Incrustación EPG */
+.channel-guide { margin: 35px 0; padding: 24px; background-color: #fafafa; border: 1px solid var(--border-color); border-radius: 16px; }
+.search-box-wrapper { position: relative; margin-bottom: 16px; }
+.search-box-wrapper input { width: 100%; padding: 12px 16px 12px 40px; font-family: var(--font-text); font-size: 0.85rem; border: 1px solid var(--border-color); border-radius: 8px; outline: none; }
+.search-box-wrapper .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: #a1a1aa; }
+
+.category-tabs { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
+.category-tabs::-webkit-scrollbar { height: 0px; }
+.tab-btn { background: #ffffff; border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-family: var(--font-text); cursor: pointer; white-space: nowrap; color: var(--text-muted); }
+.tab-btn.active { background: #111111; color: #ffffff; border-color: #111111; }
+
+.guide-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+.guide-columns ul { list-style: none; padding: 0; margin: 0; }
+.guide-columns li { padding: 10px 0; border-bottom: 1px solid #eef0f2; display: flex; flex-direction: column; gap: 4px; }
+.guide-columns li.header-li { border-bottom: 1px solid var(--text-main); font-weight: 700; color: var(--text-main); display: block; padding-top: 0; }
+
+/* Barras EPG e Indicadores de Señal Activa */
+.ch-row-info { display: flex; justify-content: space-between; align-items: center; }
+.ch-name { font-size: 0.85rem; font-weight: 500; color: var(--text-main); }
+.live-tag { font-size: 0.65rem; font-weight: 700; color: #ff3b30; background: #ffebeb; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+.epg-progress-box { display: flex; flex-direction: column; gap: 4px; margin-top: 2px; }
+.epg-current-text { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.epg-bar { width: 100%; height: 3px; background: #e4e4e7; border-radius: 2px; overflow: hidden; }
+.epg-fill { height: 100%; background: var(--text-link); width: 0%; transition: width 0.4s ease; }
+
+/* Botones Inferiores de Soporte y Repositorio */
+.watch-online-section, .collaboration-section { margin: 30px 0; padding: 24px 16px; border-radius: 12px; text-align: center; border: 1px solid var(--border-color); }
+.watch-online-section { background-color: #fafafa; }
+.online-button, .collaboration-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-text); font-weight: 500; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; width: 100%; max-width: 280px; }
+.online-button { background: #111111; color: #ffffff; }
+.collaboration-button { background: #ffffff; color: var(--text-main); border: 1px solid var(--border-color); }
+.online-button .icon, .collaboration-button .icon { width: 14px; height: 14px; }
+
+.legalidad { padding: 16px; background: #fafafa; border-radius: 8px; border: 1px solid var(--border-color); }
+.legalidad p { font-size: 0.75rem; color: #888888; text-align: justify; margin: 0; line-height: 1.5; }
+.small-text { font-size: 0.75rem; color: #999999; margin-top: 15px; text-align: center; }
+
+/* Botón flotante Back to Top */
+.back-to-top { position: fixed; bottom: 20px; right: 20px; background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 10px; border-radius: 50%; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.2s ease; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.back-to-top.show { opacity: 1; visibility: visible; }
+.back-to-top .icon { width: 16px; height: 16px; display: block; }
+
+/* Responsive Mobile (Hasta 480px) */
+@media (max-width: 480px) {
+    body { padding: 15px 10px; }
+    .container { padding: 30px 16px; border-radius: 14px; }
+    .status-monitor { grid-template-columns: 1fr; gap: 10px; padding: 12px; }
+    .status-item { flex-direction: row; justify-content: space-between; border-bottom: 1px solid #f5f5f5; padding-bottom: 4px; }
+    .status-item:last-child { border: none; }
+    .checkbox-row { flex-direction: column; gap: 10px; }
+    .channel-guide { padding: 16px; }
+    .guide-columns { grid-template-columns: 1fr; gap: 16px; }
+}
