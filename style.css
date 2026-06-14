@@ -8,7 +8,7 @@
     
     --text-main: #111111;
     --text-muted: #666666;
-    --text-link: #0070f3; /* Azul limpio de interfaz */
+    --text-link: #0070f3;
     
     --font-title: 'Montserrat', sans-serif;
     --font-text: 'Poppins', sans-serif;
@@ -37,7 +37,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Contenedor sin bordes pesados, basado en sombras sutiles y espacios limpios */
+/* Contenedor Único y Consistente */
 .container {
     max-width: 740px;
     width: 100%;
@@ -46,22 +46,6 @@ body {
     border-radius: 16px;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-subtle);
-}
-
-/* Banner Mundialista - Ahora elegante y sobrio */
-.world-cup-banner {
-    background-color: #f0f7ff;
-    color: #0051af;
-    padding: 10px 16px;
-    font-family: var(--font-title);
-    font-weight: 700;
-    font-size: 0.8rem;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    text-align: center;
-    border: 1px solid #d0e3ff;
 }
 
 h1 {
@@ -95,7 +79,7 @@ h2 a:hover {
     border-bottom-color: var(--text-link);
 }
 
-/* Badges de actualización */
+/* Badges de actualización con animación Live */
 .update-badge-container { 
     display: flex;
     justify-content: center;
@@ -104,6 +88,9 @@ h2 a:hover {
 }
 
 .update-badge, .user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 5px 14px;
     border-radius: 6px;
     font-weight: 500;
@@ -114,6 +101,23 @@ h2 a:hover {
 
 .update-badge { color: var(--text-main); }
 .user-badge { color: #00875a; background-color: #e6f6f0; border-color: #ccecdf; }
+
+/* Efecto Ping En Vivo */
+.live-ping {
+    width: 7px;
+    height: 7px;
+    background-color: #00875a;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 135, 90, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(0, 135, 90, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 135, 90, 0); }
+}
 
 p {
     font-size: 0.95rem;
@@ -135,7 +139,7 @@ strong {
 }
 
 /* Video Presentation */
-.video-presentation { margin: 50px 0; }
+.video-presentation { margin: 40px 0; }
 .video-presentation h3, .channel-guide h3 {
     font-family: var(--font-title);
     font-size: 1.15rem;
@@ -155,13 +159,48 @@ strong {
 }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-/* Guía de Canales Estilo Lista Limpia */
+/* Guía de Canales con Filtro Estético */
 .channel-guide {
     margin: 50px 0;
     padding: 35px;
     background-color: #fafafa;
     border: 1px solid var(--border-color);
     border-radius: 12px;
+}
+
+/* Nuevo Buscador */
+.search-box-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin-bottom: 25px;
+}
+
+.search-box-wrapper input {
+    width: 100%;
+    padding: 11px 16px 11px 40px;
+    font-family: var(--font-text);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box-wrapper input:focus {
+    border-color: #b5b5b5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.search-box-wrapper .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: #a1a1aa;
+    pointer-events: none;
 }
 
 .guide-columns {
@@ -171,14 +210,16 @@ strong {
 }
 
 .guide-columns ul { list-style: none; padding: 0; margin: 0; }
+
 .guide-columns li {
     font-size: 0.9rem;
     color: var(--text-muted);
     padding: 8px 0;
     border-bottom: 1px solid #f0f0f0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.guide-columns li:first-child {
+.guide-columns li.header-li {
     border-bottom: 1px solid var(--text-main);
     padding-bottom: 6px;
     margin-bottom: 8px;
@@ -220,7 +261,6 @@ strong {
 .raw-card-body { padding: 20px; }
 .raw-card-body p { font-size: 0.85rem; margin-bottom: 12px; }
 
-/* El input del código ahora es gris muy suave, súper legible */
 .raw-link-wrapper {
     display: flex;
     align-items: center;
@@ -252,6 +292,7 @@ strong {
     border-radius: 6px;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: all 0.15s ease;
 }
 
@@ -262,7 +303,6 @@ strong {
 }
 
 .copy-btn .icon, .download-link-btn .icon { width: 15px; height: 15px; }
-.copy-btn .icon-check { display: none; color: #00875a; }
 
 /* Botones Principales de Acción */
 .watch-online-section, .collaboration-section {
@@ -292,7 +332,6 @@ strong {
     transition: all 0.15s ease;
 }
 
-/* Botón Negro Sólido estilo Vercel */
 .online-button {
     background: #111111;
     color: #ffffff;
@@ -302,7 +341,6 @@ strong {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Botón Blanco Bordeado */
 .collaboration-button {
     background: #ffffff;
     color: var(--text-main);
@@ -327,6 +365,42 @@ strong {
 
 .small-text { font-size: 0.8rem; color: #999999; margin-top: 20px; text-align: center; }
 
+/* Nuevo Botón Volver Arriba */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #f4f4f5;
+    transform: translateY(-2px);
+}
+
+.back-to-top .icon {
+    width: 18px;
+    height: 18px;
+}
+
 /* Responsivo */
 @media (max-width: 600px) {
     body { padding: 30px 10px; }
@@ -334,4 +408,5 @@ strong {
     h1 { font-size: 1.9rem; }
     .guide-columns { grid-template-columns: 1fr; gap: 20px; }
     .online-button, .collaboration-button { width: 100%; justify-content: center; }
+    .back-to-top { bottom: 20px; right: 20px; }
 }
