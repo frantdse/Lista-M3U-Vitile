@@ -178,3 +178,151 @@ header h2 a { color: var(--text-main); text-decoration: none; font-weight: 600; 
     .checkbox-row { flex-direction: column; gap: 10px; }
     .channel-guide { padding: 16px; }
             }
+
+/* --- ESTILOS EXCLUSIVOS PARA LA SECCIÓN EDITORIAL VITILE --- */
+
+.editorial-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-top: 1px solid var(--border-color, #f1f5f9);
+    padding-top: 45px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.editorial-header {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.editorial-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: var(--text-link, #2563eb);
+    background: rgba(37, 99, 235, 0.06);
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.editorial-title {
+    font-family: var(--font-title, 'Montserrat', sans-serif);
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin: 0;
+    color: var(--text-main, #0f172a);
+    letter-spacing: -0.5px;
+}
+
+.editorial-lead {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #334155;
+    margin: 0 0 35px 0;
+    text-align: justify;
+}
+
+/* Grilla Avanzada de Características */
+.grid-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color, #f1f5f9);
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-dark, #e2e8f0);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+}
+
+.feature-emoji {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.feature-card h4 {
+    font-family: var(--font-title, 'Montserrat', sans-serif);
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main, #0f172a);
+}
+
+.feature-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted, #64748b);
+    margin: 0;
+    text-align: left;
+}
+
+/* Bloque Destacado Tipo Cita Lateral */
+.editorial-block {
+    background-color: var(--bg-main, #f8fafc);
+    border-left: 4px solid var(--text-main, #0f172a);
+    padding: 24px;
+    border-radius: 0 16px 16px 0;
+    margin-bottom: 35px;
+}
+
+.editorial-block h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    font-family: var(--font-title, 'Montserrat', sans-serif);
+    font-weight: 700;
+    color: var(--text-main, #0f172a);
+}
+
+.editorial-block p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+    text-align: justify;
+}
+
+/* Footer Editorial */
+.editorial-footer-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-muted, #64748b);
+    text-align: justify;
+    padding: 0 4px;
+    margin-bottom: 20px;
+}
+
+/* Animación Simple de Entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Adaptación Responsiva Estricta */
+@media (max-width: 580px) {
+    .grid-features {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .editorial-title {
+        font-size: 1.4rem;
+    }
+    .feature-card {
+        padding: 20px;
+    }
+    .editorial-block {
+        padding: 18px;
+    }
+               }
