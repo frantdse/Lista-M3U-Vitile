@@ -11,12 +11,16 @@
 </head>
 <body>
 
+    <!-- Iconos Globales SVG -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
         </symbol>
         <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876V5.25A.375.375 0 0013.5 4.875H12c-.104 0-.206.022-.3.06a1 1 0 00-.6.94v2.25c0 .621.504 1.125 1.125 1.125h.375m6.5 0v.375c0 .621.504 1.125 1.125 1.125h3.375m-3.375 0H12a1.125 1.125 0 01-1.125-1.125V14.25m1.125 3h3.375" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
         </symbol>
         <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8" />
@@ -34,11 +38,31 @@
         <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.008.069-.008 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
         </symbol>
+        <symbol id="icon-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127c.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.43l-1.003.767c-.29.223-.443.59-.395.952.008.058.012.117.012.175t-.004.117c-.048.362.105.729.395.952l1.003.767a1.125 1.125 0 01.26 1.43l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.216-.456a1.125 1.125 0 00-1.076.124a6.47 6.47 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281a1.125 1.125 0 00-.644-.87a6.52 6.52 0 01-.22-.127a1.125 1.125 0 00-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.43l1.004-.767c.29-.223.443-.59.395-.952a6.45 6.45 0 01-.012-.175c0-.058.004-.117.012-.175c.048-.362-.105-.73-.395-.952l-1.004-.767a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.49l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128c.332-.183.582-.495.644-.869l.214-1.28z" />
+            <circle cx="12" cy="12" r="3" />
+        </symbol>
     </svg>
+
+    <!-- Cargador Global Oculto Requerido por loadEPG() -->
+    <div id="globalLoader" style="display: none; position: fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center; color:#fff; font-family:var(--font-body);">
+        <div style="text-align:center;">
+            <div style="border:4px solid rgba(255,255,255,0.3); border-top:4px solid #fff; border-radius:50%; width:40px; height:40px; animation: spin 1s linear infinite; margin:0 auto 10px auto;"></div>
+            <span>Procesando Guía de Programación...</span>
+        </div>
+    </div>
+    <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
 
     <div class="container">
 
-        <div style="background: linear-gradient(180deg, #073673 0%, #04234c 100%); padding: 30px 20px; border-radius: 16px; color: #ffffff; text-align: center; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(4,35,76,0.15);">
+        <!-- Header y Cuenta Regresiva -->
+        <div style="background: linear-gradient(180deg, #073673 0%, #04234c 100%); padding: 30px 20px; border-radius: 16px; color: #ffffff; text-align: center; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(4,35,76,0.15); position:relative;">
+            
+            <!-- Botón de Configuración de EPG XML -->
+            <button onclick="toggleConfigPanel()" style="position:absolute; top:15px; right:15px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; width:36px; height:36px; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;" title="Configurar Origen EPG">
+                <svg style="width:20px; height:20px;"><use href="#icon-cog"/></svg>
+            </button>
+
             <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; opacity: 0.8; display: block; margin-bottom: 8px;">CUENTA REGRESIVA</span>
             
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px;">
@@ -84,6 +108,21 @@
             </p>
         </div>
 
+        <!-- Panel de Configuración Avanzado EPG (Requerido por executeReload() y loadEPG()) -->
+        <div id="configPanel" style="display:none; background:#f4f6f9; border:1px solid #ddd; border-radius:12px; padding:20px; margin-bottom:30px; font-family:var(--font-body);">
+            <h4 style="margin:0 0 10px 0; color:#04234c;">Configuración de Guía XMLTV</h4>
+            <p style="font-size:0.8rem; color:#666; margin:0 0 15px 0;">Modificá el origen remoto para compilar la grilla de canales en tiempo real.</p>
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                <button onclick="toggleUrlSection()" style="background:#073673; color:#fff; border:none; padding:8px 14px; border-radius:6px; font-size:0.8rem; cursor:pointer;">Cambiar URL</button>
+                <button onclick="loadDefaultEPG()" style="background:#e2e8f0; color:#333; border:none; padding:8px 14px; border-radius:6px; font-size:0.8rem; cursor:pointer;">Restaurar Default</button>
+            </div>
+            <div id="urlConfigSection" style="display:none; flex-direction:column; gap:8px;">
+                <input type="text" id="urlInput" value="https://impeditor.com/epg/capanueve/capanueve" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; font-size:0.85rem;">
+                <button onclick="manualLoadEPG()" style="background:#00875a; color:#fff; border:none; padding:8px 12px; border-radius:6px; font-size:0.8rem; cursor:pointer; align-self:flex-start;">Cargar e Inyectar XML</button>
+            </div>
+        </div>
+
+        <!-- Monitores de Estado del Servidor -->
         <div class="status-monitor">
             <div class="status-item">
                 <span class="status-label">SERVIDOR M3U</span>
@@ -99,6 +138,7 @@
             </div>
         </div>
 
+        <!-- Generador Dinámico de Listas Personalizadas -->
         <div class="generator-box">
             <div class="generator-title">
                 <svg class="icon"><use href="#icon-bolt" /></svg>
@@ -108,22 +148,22 @@
 
             <div class="checkbox-row">
                 <label class="custom-checkbox">
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="gen-noticias" checked onchange="actualizarEnlaceM3U()">
                     <span class="checkmark"></span>
                     Noticias
                 </label>
                 <label class="custom-checkbox">
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="gen-general" checked onchange="actualizarEnlaceM3U()">
                     <span class="checkmark"></span>
                     General / Abierta
                 </label>
                 <label class="custom-checkbox">
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="gen-tematicos" checked onchange="actualizarEnlaceM3U()">
                     <span class="checkmark"></span>
                     Temáticos / Música
                 </label>
                 <label class="custom-checkbox">
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="gen-internacional" checked onchange="actualizarEnlaceM3U()">
                     <span class="checkmark"></span>
                     Internacional
                 </label>
@@ -131,71 +171,80 @@
 
             <div class="action-buttons-wrapper">
                 <div class="raw-link-wrapper">
-                    <div class="raw-link-text" id="urlText">https://gist.githubusercontent.com/frantdse/f6989518c73826ade6734c63c367af4c/raw/</div>
-                    <button class="copy-btn" title="Copiar URL" onclick="navigator.clipboard.writeText(document.getElementById('urlText').innerText)">
-                        <svg class="icon"><use href="#icon-copy" /></svg>
+                    <div class="raw-link-text" id="m3u-url-display">https://gist.githubusercontent.com/frantdse/f6989518c73826ade6734c63c367af4c/raw/</div>
+                    <button class="copy-btn" title="Copiar URL" onclick="copiarUrlGist(this)">
+                        <svg class="icon icon-copy"><use href="#icon-copy" /></svg>
+                        <svg class="icon icon-check" style="display:none;"><use href="#icon-check" /></svg>
                     </button>
                 </div>
-                <button class="download-m3u-btn">
+                <button class="download-m3u-btn" onclick="descargarM3UFiltrado()">
                     <svg class="icon"><use href="#icon-download" /></svg>
                     Descargar .M3U
                 </button>
             </div>
         </div>
 
+        <!-- Contenedores e Inyecciones Auxiliares del Motor XML (Evitan errores de JS) -->
+        <div id="grid" style="display:none;"></div>
+        <div id="listItemsContainer" style="display:none;"></div>
+        <input type="hidden" id="mainSearchInput">
+        <input type="hidden" id="listSearchInput">
+
+        <!-- Sección Editorial -->
         <section class="editorial-content">
-    <div class="editorial-header">
-        <span class="editorial-tag"></span>
-        <h2 class="editorial-title">Nuestra Historia y Filosofía</h2>
-    </div>
-    
-    <p class="editorial-lead">
-        Somos una lista creada en <strong>febrero de 2025</strong> con el firme objetivo de ser una forma abierta, gratuita y fácil de ver la televisión argentina. Nacimos como respuesta directa a la creciente fragmentación de contenidos y a la dificultad que enfrentan miles de usuarios para acceder a las transmisiones nacionales de forma unificada, simple y sin fricciones.
-    </p>
+            <div class="editorial-header">
+                <span class="editorial-tag"></span>
+                <h2 class="editorial-title">Nuestra Historia y Filosofía</h2>
+            </div>
+            
+            <p class="editorial-lead">
+                Somos una lista creada en <strong>febrero de 2025</strong> con el firme objetivo de ser una forma abierta, gratuita y fácil de ver la televisión argentina. Nacimos como respuesta directa a la creciente fragmentación de contenidos y a la dificultad que enfrentan miles de usuarios para acceder a las transmisiones nacionales de forma unificada, simple y sin fricciones.
+            </p>
 
-    <div class="grid-features">
-        <div class="feature-card">
-            <div class="feature-emoji">🔓</div>
-            <h4>Infraestructura Abierta</h4>
-            <p>Creemos en una web transparente. No dependemos de servidores ocultos ni APIs privadas. Cualquiera puede auditar, revisar y aportar sus propios enlaces e ideas directo en nuestro repositorio oficial.</p>
-        </div>
-        
-        <div class="feature-card">
-            <div class="feature-emoji">🇦🇷</div>
-            <h4>Identidad Federal</h4>
-            <p>La televisión argentina no termina en Buenos Aires. Nos esforzamos diariamente para que cada rincón del país cuente con sus señales locales, desde los grandes canales de noticias hasta las repetidoras comunitarias de provincia.</p>
-        </div>
+            <div class="grid-features">
+                <div class="feature-card">
+                    <div class="feature-emoji">🔓</div>
+                    <h4>Infraestructura Abierta</h4>
+                    <p>Creemos en una web transparente. No dependemos de servidores ocultos ni APIs privadas. Cualquiera puede auditar, revisar y aportar sus propios enlaces e ideas directo en nuestro repositorio oficial.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-emoji">🇦🇷</div>
+                    <h4>Identidad Federal</h4>
+                    <p>La televisión argentina no termina en Buenos Aires. Nos esforzamos diariamente para que cada rincón del país cuente con sus señales locales, desde los grandes canales de noticias hasta las repetidoras comunitarias de provincia.</p>
+                </div>
 
-        <div class="feature-card">
-            <div class="feature-emoji">⚡</div>
-            <h4>Optimización Manual</h4>
-            <p>A diferencia de los raspadores automáticos de IPTV que acumulan enlaces rotos y basura digital, cada flujo en Vitile pasa por un riguroso control manual para asegurar tasas de refresco óptimas y la menor latencia posible.</p>
-        </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">⚡</div>
+                    <h4>Optimización Manual</h4>
+                    <p>A diferencia de los raspadores automáticos de IPTV que acumulan enlaces rotos y basura digital, cada flujo en Vitile pasa por un riguroso control manual para asegurar tasas de refresco óptimas y la menor latencia posible.</p>
+                </div>
 
-        <div class="feature-card">
-            <div class="feature-emoji">🛡️</div>
-            <h4>Cero Fricción</h4>
-            <p>Sin registros obligatorios, sin publicidad invasiva insertada por nuestra parte y sin aplicaciones de terceros. Es simplemente copiar la URL remota, pegarla en tu reproductor favorito y empezar a ver.</p>
-        </div>
-    </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">🛡️</div>
+                    <h4>Cero Fricción</h4>
+                    <p>Sin registros obligatorios, sin publicidad invasiva insertada por nuestra parte y sin aplicaciones de terceros. Es simplemente copiar la URL remota, pegarla en tu reproductor favorito y empezar a ver.</p>
+                </div>
+            </div>
 
-    <div class="editorial-block">
-        <h3>Un compromiso con la comunidad</h3>
-        <p>
-            El ecosistema del IPTV y las transmisiones en vivo cambia a un ritmo caótico: los enlaces caen, los servidores cambian de protocolo y las transmisiones oficiales modifican sus restricciones geográficas de la noche a la mañana. 
-        </p>
-        <p style="margin-top: 10px;">
-            Frente a esto, nuestro compromiso se mantiene intacto desde el primer día: ofrecer una alternativa confiable, robusta y mantenida con pasión por la propia comunidad. No vendemos servicios ni prometemos acceso a contenido privado; defendemos la democratización de las señales que ya son de libre acceso, organizándolas para que usarlas sea un placer visual y técnico.
-        </p>
-    </div>
+            <div class="editorial-block">
+                <h3>Un compromiso con la comunidad</h3>
+                <p>
+                    El ecosistema del IPTV y las transmisiones en vivo cambia a un ritmo caótico: los enlaces caen, los servidores cambian de protocolo y las transmisiones oficiales modifican sus restricciones geográficas de la noche a la mañana. 
+                </p>
+                <p style="margin-top: 10px;">
+                    Frente a esto, nuestro compromiso se mantiene intacto desde el primer día: ofrecer una alternativa confiable, robusta y mantenida con pasión por la propia comunidad. No vendemos servicios ni prometemos acceso a contenido privado; defendemos la democratización de las señales que ya son de libre acceso, organizándolas para que usarlas sea un placer visual y técnico.
+                </p>
+            </div>
 
-    <div class="editorial-footer-text">
-        <p>
-            M3U Vitile no es un producto comercial, es un esfuerzo colectivo. Cada actualización, cada corrección de bug en los archivos de listas y cada nueva señal incorporada es el resultado del feedback de más de mil usuarios que eligen sintonizar el país con nosotros todos los días.
-        </p>
-    </div>
+            <div class="editorial-footer-text">
+                <p>
+                    M3U Vitile no es un producto comercial, es un esfuerzo colectivo. Cada actualización, cada corrección de bug en los archivos de listas y cada nueva señal incorporada es el resultado del feedback de más de mil usuarios que eligen sintonizar el país con nosotros todos los días.
+                </p>
+            </div>
         </section>
 
+        <!-- Video Presentación -->
         <div class="video-presentation">
             <h3>Video de Presentación</h3>
             <div class="video-wrapper">
@@ -203,6 +252,7 @@
             </div>
         </div>
 
+        <!-- Buscador de Canales & Grilla con EPG -->
         <div class="channel-guide">
             <h3>Guía de Canales & Programación</h3>
             
@@ -212,19 +262,23 @@
             </div>
 
             <div class="category-tabs">
-                <button class="tab-btn active">Todos</button>
-                <button class="tab-btn">Noticias</button>
-                <button class="tab-btn">General/Abierta</button>
-                <button class="tab-btn">Otros</button>
-                <button class="tab-btn">Internacional</button>
+                <button class="tab-btn active" data-filter="all">Todos</button>
+                <button class="tab-btn" data-filter="noticias">Noticias</button>
+                <button class="tab-btn" data-filter="general">General/Abierta</button>
+                <button class="tab-btn" data-filter="tematicos">Otros</button>
+                <button class="tab-btn" data-filter="internacional">Internacional</button>
+            </div>
+
+            <div id="noResultsMessage" style="display:none; text-align:center; padding:30px; color:#ef4444; font-family:var(--font-body); font-weight:600;">
+                ❌ No se encontraron canales que coincidan con la búsqueda.
             </div>
 
             <div class="guide-columns">
                 
-                <div class="guide-group">
+                <div class="guide-group" data-category="noticias">
                     <ul>
                         <li class="header-li">Noticias</li>
-                        <li>
+                        <li class="channel-item" data-id="0905">
                             <div class="ch-row-info">
                                 <span class="ch-name">TN (Todo Noticias) En Vivo</span>
                                 <span class="live-tag">Vivo</span>
@@ -234,7 +288,8 @@
                                 <div class="epg-bar"><div class="epg-fill" style="width: 45%;"></div></div>
                             </div>
                         </li>
-                        <li>
+
+                        <li class="channel-item" data-id="0222">
                             <div class="ch-row-info">
                                 <span class="ch-name">A24 En Vivo</span>
                                 <span class="live-tag">Vivo</span>
@@ -244,18 +299,28 @@
                                 <div class="epg-bar"><div class="epg-fill" style="width: 20%;"></div></div>
                             </div>
                         </li>
-                        <li><div class="ch-row-info"><span class="ch-name">Canal 26</span></div></li>
-                        <li><div class="ch-row-info"><span class="ch-name">Crónica TV</span></div></li>
-                        <li><div class="ch-row-info"><span class="ch-name">Canal E</span></div></li>
-                        <li><div class="ch-row-info"><span class="ch-name">C5N</span></div></li>
-                        <li><div class="ch-row-info"><span class="ch-name">24/7 Noticias</span></div></li>
+                        <li class="channel-item" data-id="0917">
+                            <div class="ch-row-info"><span class="ch-name">Canal 26</span></div>
+                        </li>
+                        <li class="channel-item" data-id="0934">
+                            <div class="ch-row-info"><span class="ch-name">Crónica TV</span></div>
+                        </li>
+                        <li class="channel-item" data-id="0964">
+                            <div class="ch-row-info"><span class="ch-name">Canal E</span></div>
+                        </li>
+                        <li class="channel-item" data-id="0932">
+                            <div class="ch-row-info"><span class="ch-name">C5N</span></div>
+                        </li>
+                        <li class="channel-item" data-id="0923">
+                            <div class="ch-row-info"><span class="ch-name">24/7 Noticias</span></div>
+                        </li>
                     </ul>
                 </div>
 
-                <div class="guide-group">
+                <div class="guide-group" data-category="general">
                     <ul>
                         <li class="header-li">General / Abierta</li>
-                        <li>
+                        <li class="channel-item" data-id="0909">
                             <div class="ch-row-info">
                                 <span class="ch-name">Telefe En Vivo</span>
                                 <span class="live-tag">Vivo</span>
@@ -265,7 +330,7 @@
                                 <div class="epg-bar"><div class="epg-fill" style="width: 60%;"></div></div>
                             </div>
                         </li>
-                        <li>
+                        <li class="channel-item" data-id="0915">
                             <div class="ch-row-info">
                                 <span class="ch-name">El Trece En Vivo</span>
                                 <span class="live-tag">Vivo</span>
@@ -275,7 +340,12 @@
                                 <div class="epg-bar"><div class="epg-fill" style="width: 15%;"></div></div>
                             </div>
                         </li>
-                        <li><div class="ch-row-info"><span class="ch-name">América TV</span></div></li>
+                        <li class="channel-item" data-id="0935">
+                            <div class="ch-row-info"><span class="ch-name">América TV</span></div>
+                        </li>
+                        <li class="channel-item" data-id="0916">
+                            <div class="ch-row-info"><span class="ch-name">El Nueve</span></div>
+                        </li>
                     </ul>
                 </div>
 
@@ -304,19 +374,19 @@
 
     </div>
 
-    <button id="backToTop" class="back-to-top" title="Volver arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+    <button id="backToTop" class="back-to-top" title="Volver arriba">
         <svg class="icon"><use href="#icon-arrow-up" /></svg>
     </button>
 
+    <script src="script.js"></script>
     <script>
-        window.onscroll = function() {
-            const btn = document.getElementById("backToTop");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                btn.classList.add("show");
-            } else {
-                btn.classList.remove("show");
+        // Disparador inicializador de EPG simulado al montar la app
+        document.addEventListener("DOMContentLoaded", () => {
+            if(typeof actualizarEPGInterno === 'function') {
+                actualizarEPGInterno();
+                setInterval(actualizarEPGInterno, 60000); // Refresca cada 1 minuto
             }
-        };
+        });
     </script>
 </body>
-                                                         </html>
+            </html>
