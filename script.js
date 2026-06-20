@@ -1,6 +1,9 @@
 /**
- * Función que copia el contenido del enlace al portapapeles.
+ * =========================================================================
+ * 1. SECCIÓN: GESTIÓN DE PORTAPAPELES Y FUNCIONES DE INTERFAZ GENERAL
+ * =========================================================================
  */
+
 function copyLink(elementId, button) {
     const linkElement = document.getElementById(elementId);
     if (!linkElement) {
@@ -35,65 +38,31 @@ function copyLink(elementId, button) {
 }
 
 /**
- * Filtro/Buscador interactivo de canales en tiempo real
- */
-document.getElementById('channelSearch').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase().trim();
-    const channels = document.querySelectorAll('.channel-item');
-    const groups = document.querySelectorAll('.guide-group');
-    let hasResults = false;
-
-    channels.forEach(channel => {
-        const channelName = channel.textContent.toLowerCase();
-        if (channelName.includes(searchTerm)) {
-            channel.style.display = '';
-            hasResults = true;
-        } else {
-            channel.style.display = 'none';
-        }
-    });
-
-    // Controlar la visibilidad de los encabezados de grupo para que no queden vacíos
-    groups.forEach(group => {
-        const visibleChannels = group.querySelectorAll('.channel-item:not([style="display: none;"])');
-        const header = group.querySelector('.header-li');
-        if (visibleChannels.length === 0 && searchTerm !== '') {
-            header.style.opacity = '0.3'; // Atenúa el título si su bloque no tiene coincidencias
-        } else {
-            header.style.opacity = '1';
-        }
-    });
-
-    // Mostrar mensaje si no hay ninguna coincidencia
-    const noResultsMsg = document.getElementById('noResultsMessage');
-    if (!hasResults && searchTerm !== '') {
-        noResultsMsg.style.display = 'block';
-    } else {
-        noResultsMsg.style.display = 'none';
-    }
-});
-
-/**
  * Lógica funcional para el botón flotante "Volver Arriba"
  */
 const backToTopBtn = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
     });
-});
 
-        // Bloque RAW nativo de tu lista M3U (Directo en memoria, sin llamadas JSON)
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+/**
+ * =========================================================================
+ * 2. SECCIÓN: BASE DE DATOS M3U RAW Y GENERADOR DE LISTAS PERSONALIZADAS
+ * =========================================================================
+ */
 const M3U_RAW_DATA = `#EXTM3U url-tvg="https://impeditor.com/epg/capanueve/capanueve"
 
 # Noticias
@@ -169,9 +138,6 @@ https://mblesmain01.telesur.ultrabase.net/mbliveMain/hd/chunklist.m3u8`;
 
 const BASE_GIST_URL = "https://gist.githubusercontent.com/frantdse/f6989518c73826ade6734c63c367af4c/raw/";
 
-/**
- * 1. Cambia dinámicamente el enlace remoto mostrado según filtros
- */
 function actualizarEnlaceM3U() {
     const noticias = document.getElementById('gen-noticias').checked;
     const general = document.getElementById('gen-general').checked;
@@ -185,16 +151,15 @@ function actualizarEnlaceM3U() {
     if (!internacional) queries.push("exclude=internacional");
 
     const display = document.getElementById('m3u-url-display');
-    if (queries.length > 0) {
-        display.textContent = BASE_GIST_URL + "?" + queries.join("&");
-    } else {
-        display.textContent = BASE_GIST_URL;
+    if (display) {
+        if (queries.length > 0) {
+            display.textContent = BASE_GIST_URL + "?" + queries.join("&");
+        } else {
+            display.textContent = BASE_GIST_URL;
+        }
     }
 }
 
-/**
- * 2. Compila el M3U crudo en caliente y dispara la descarga nativa en el navegador
- */
 function descargarM3UFiltrado() {
     const noticias = document.getElementById('gen-noticias').checked;
     const general = document.getElementById('gen-general').checked;
@@ -212,13 +177,11 @@ function descargarM3UFiltrado() {
         if (!linea) continue;
 
         if (linea.startsWith('#EXTINF')) {
-            // Guardar bloque anterior si era válido antes de procesar el nuevo
             if (bloqueActual.length > 0 && grupoValido) {
                 contenidoFinal.push(...bloqueActual);
             }
             bloqueActual = [linea];
             
-            // Determinar categoría del canal
             let lowerLine = linea.toLowerCase();
             if (lowerLine.includes('group-title="noticias"')) {
                 grupoValido = noticias;
@@ -227,18 +190,16 @@ function descargarM3UFiltrado() {
             } else if (lowerLine.includes('group-title="internacional"')) {
                 grupoValido = internacional;
             } else {
-                grupoValido = tematicos; // Agrupa música, remodelación, extras y otros
+                grupoValido = tematicos; 
             }
         } else if (bloqueActual.length > 0) {
             bloqueActual.push(linea);
         }
     }
-    // Guardar el último canal procesado
     if (bloqueActual.length > 0 && grupoValido) {
         contenidoFinal.push(...bloqueActual);
     }
 
-    // Crear el archivo virtual descargable
     const blob = new Blob([contenidoFinal.join('\n')], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -250,32 +211,99 @@ function descargarM3UFiltrado() {
     URL.revokeObjectURL(url);
 }
 
-/**
- * 3. Copiar enlace remoto Gist con animación de iconos
- */
 function copiarUrlGist(button) {
-    const text = document.getElementById('m3u-url-display').textContent;
+    const display = document.getElementById('m3u-url-display');
+    if (!display) return;
+    const text = display.textContent;
     navigator.clipboard.writeText(text).then(() => {
         const copyIcon = button.querySelector('.icon-copy');
         const checkIcon = button.querySelector('.icon-check');
-        copyIcon.style.display = 'none';
-        checkIcon.style.display = 'inline-block';
-        setTimeout(() => {
-            checkIcon.style.display = 'none';
-            copyIcon.style.display = 'inline-block';
-        }, 1500);
+        if (copyIcon && checkIcon) {
+            copyIcon.style.display = 'none';
+            checkIcon.style.display = 'inline-block';
+            setTimeout(() => {
+                checkIcon.style.display = 'none';
+                copyIcon.style.display = 'inline-block';
+            }, 1500);
+        }
     });
 }
 
 /**
- * 4. Control de EPG en tiempo real por franjas horarias
+ * =========================================================================
+ * 3. SECCIÓN: BUSCADOR UNIFICADO Y SISTEMA DE TABS (GUIAS)
+ * =========================================================================
+ */
+const searchInput = document.getElementById('channelSearch');
+const tabButtons = document.querySelectorAll('.tab-btn');
+const groups = document.querySelectorAll('.guide-group');
+
+function filtrarGuias() {
+    if (!searchInput) return;
+    const txtBusqueda = searchInput.value.toLowerCase().trim();
+    const activeTabEl = document.querySelector('.tab-btn.active');
+    const tabActiva = activeTabEl ? activeTabEl.getAttribute('data-filter') : 'all';
+    let visibles = 0;
+
+    groups.forEach(grupo => {
+        const categoria = grupo.getAttribute('data-category');
+        const items = grupo.querySelectorAll('.channel-item');
+        const header = grupo.querySelector('.header-li');
+        let contadorGrupo = 0;
+
+        items.forEach(item => {
+            // Intenta buscar la clase .ch-name, si no usa el texto plano del item
+            const nameEl = item.querySelector('.ch-name');
+            const nombreCanal = nameEl ? nameEl.textContent.toLowerCase() : item.textContent.toLowerCase();
+            
+            const cumpleBusqueda = nombreCanal.includes(txtBusqueda);
+            const cumpleTab = (tabActiva === 'all' || categoria === tabActiva);
+
+            if (cumpleBusqueda && cumpleTab) {
+                item.style.display = '';
+                contadorGrupo++;
+                visibles++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // Manejo elegante de visibilidad de los contenedores/cabeceras de los grupos
+        if (contadorGrupo === 0) {
+            grupo.style.display = 'none';
+        } else {
+            grupo.style.display = '';
+            if (header) {
+                header.style.opacity = (txtBusqueda !== '') ? '0.5' : '1';
+            }
+        }
+    });
+
+    const noResultsMsg = document.getElementById('noResultsMessage');
+    if (noResultsMsg) {
+        noResultsMsg.style.display = (visibles === 0) ? 'block' : 'none';
+    }
+}
+
+if (searchInput) {
+    searchInput.addEventListener('input', filtrarGuias);
+}
+tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filtrarGuias();
+    });
+});
+
+/**
+ * Control de EPG simulado por franjas horarias
  */
 function actualizarEPGInterno() {
     const ahora = new Date();
     const hora = ahora.getHours();
     const minutos = ahora.getMinutes();
     
-    // Configuración estructural para canales principales
     const epgData = {
         "0905": { name: "TN Todo Noticias - En Vivo", prog: (minutos * 1.4) },
         "0222": { name: "El Noticiero de A24", prog: (minutos * 1.1) },
@@ -283,7 +311,6 @@ function actualizarEPGInterno() {
         "0915": { name: "Telenoche Argentina", prog: (minutos * 1.2) }
     };
 
-    // Variaciones según bloque de horario en el día
     if (hora >= 13 && hora < 19) {
         epgData["0905"].name = "TN Central - Cobertura Especial";
         epgData["0222"].name = "Intrusos en el Espectáculo";
@@ -311,47 +338,134 @@ function actualizarEPGInterno() {
 }
 
 /**
- * 5. Buscador Dinámico Clásico y Sistema de Tabs
+ * =========================================================================
+ * 4. SECCIÓN: MOTOR DE PARSEO Y GESTIÓN EPG XML (PANEL CONFIG)
+ * =========================================================================
  */
-const searchInput = document.getElementById('channelSearch');
-const tabButtons = document.querySelectorAll('.tab-btn');
-const groups = document.querySelectorAll('.guide-group');
-
-function filtrarGuias() {
-    const txtBusqueda = searchInput.value.toLowerCase().trim();
-    const tabActiva = document.querySelector('.tab-btn.active').getAttribute('data-filter');
-    let visibles = 0;
-
-    groups.forEach(grupo => {
-        const categoria = grupo.getAttribute('data-category');
-        const items = grupo.querySelectorAll('.channel-item');
-        let contadorGrupo = 0;
-
-        items.forEach(item => {
-            const nombreCanal = item.querySelector('.ch-name').textContent.toLowerCase();
-            const cumpleBusqueda = nombreCanal.includes(txtBusqueda);
-            const cumpleTab = (tabActiva === 'all' || categoria === tabActiva);
-
-            if (cumpleBusqueda && cumpleTab) {
-                item.style.display = '';
-                contadorGrupo++;
-                visibles++;
-            } else {
-                item.style.display = 'none';
-            }
-        });
-        grupo.style.display = (contadorGrupo === 0) ? 'none' : '';
-    });
-
-    document.getElementById('noResultsMessage').style.display = (visibles === 0) ? 'block' : 'none';
+function toggleConfigPanel() {
+    const p = document.getElementById('configPanel'); 
+    if (p) {
+        p.style.display = p.style.display === 'block' ? 'none' : 'block'; 
+    }
+    const urlSec = document.getElementById('urlConfigSection');
+    if (urlSec) urlSec.style.display = 'none'; 
 }
 
-searchInput.addEventListener('input', filtrarGuias);
-tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filtrarGuias();
-    });
-});
+function toggleUrlSection() {
+    const sec = document.getElementById('urlConfigSection');
+    if (sec) {
+        sec.style.display = sec.style.display === 'none' ? 'flex' : 'none';
+    }
+}
 
+function showLoader() { 
+    const loader = document.getElementById('globalLoader');
+    if (loader) loader.style.display = 'flex'; 
+}
+
+function hideLoader() { 
+    const loader = document.getElementById('globalLoader');
+    if (loader) loader.style.display = 'none'; 
+}
+
+function manualLoadEPG() {
+    const urlInput = document.getElementById('urlInput');
+    if (!urlInput) return;
+    const urlRaw = urlInput.value.trim();
+    if(!urlRaw) return;
+    localStorage.setItem('epg_url', urlRaw); 
+    executeReload();
+}
+
+function loadDefaultEPG() {
+    const urlInput = document.getElementById('urlInput');
+    if (urlInput) {
+        urlInput.value = DEFAULT_EPG_URL;
+    }
+    localStorage.setItem('epg_url', DEFAULT_EPG_URL);
+    executeReload();
+}
+
+function executeReload() {
+    showLoader();
+    if (typeof state !== 'undefined') {
+        state.visibleIds.clear(); 
+        state.allChannels = []; 
+        state.displayedRandomIds = []; 
+        state.search = ''; 
+        state.listSearch = '';
+    }
+    if (typeof heroState !== 'undefined') {
+        heroState.list = [];
+    }
+    
+    const mSearch = document.getElementById('mainSearchInput');
+    const lSearch = document.getElementById('listSearchInput');
+    const cPanel = document.getElementById('configPanel');
+    
+    if (mSearch) mSearch.value = '';
+    if (lSearch) lSearch.value = '';
+    if (cPanel) cPanel.style.display = 'none';
+    
+    loadEPG();
+}
+
+async function loadEPG() {
+    const urlInput = document.getElementById('urlInput');
+    const urlRaw = urlInput ? urlInput.value.trim() : '';
+    
+    const grid = document.getElementById('grid');
+    const listContainer = document.getElementById('listItemsContainer');
+
+    // Si es la primera carga o está vacío, limpiamos las vistas y mostramos el loader animado
+    if (typeof state !== 'undefined' && state.allChannels.length === 0) {
+        if (grid) grid.innerHTML = ''; 
+        if (listContainer) listContainer.innerHTML = ''; 
+        showLoader();
+    }
+    
+    // Array de proxies para saltear bloqueos de CORS (Cross-Origin Resource Sharing)
+    const proxies = [ 
+        "", 
+        "https://api.allorigins.win/raw?url=", 
+        "https://corsproxy.io/?url=", 
+        "https://api.codetabs.com/v1/proxy?quest=" 
+    ];
+    let success = false; 
+    let xmlText = "";
+    
+    // Bucle asincrónico que testea uno por uno los proxies hasta que uno devuelva el XML
+    for (let proxy of proxies) {
+        try {
+            const targetUrl = proxy ? proxy + encodeURIComponent(urlRaw) : urlRaw;
+            const resp = await fetch(targetUrl);
+            if (resp.ok) {
+                xmlText = await resp.text();
+                // Validamos que la respuesta realmente tenga estructura de XML/Guía de TV
+                if (xmlText.includes('<?xml') || xmlText.includes('<tv')) { 
+                    success = true; 
+                    break; 
+                }
+            }
+        } catch (e) { 
+            console.warn("Fallo con proxy: " + proxy); 
+        }
+    }
+    
+    // Si logramos obtener el texto del XML, disparamos el mapeo estructural (parseXML)
+    if (success && xmlText) {
+        try { 
+            parseXML(xmlText); 
+            hideLoader(); 
+            return; 
+        } catch(e) { 
+            console.error("Error procesando XML:", e); 
+        }
+    }
+    
+    // Plan de contingencia: Si todo falla, ocultamos loader y plantamos mensaje de error en pantalla
+    hideLoader();
+    const errorMsg = `<div id="loading" style="color:var(--accent)">Error al cargar la URL. Asegúrate de que el enlace sea válido y público.</div>`;
+    if (grid) grid.innerHTML = errorMsg; 
+    if (listContainer) listContainer.innerHTML = errorMsg;
+}
